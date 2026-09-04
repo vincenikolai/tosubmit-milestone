@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ledesma | Full-Stack Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-container">
+        <div class="logo">Ledesma<span>.dev</span></div>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Home / Hero Section -->
+      <section id="hero" class="hero-section">
+        <div class="hero-content">
+          <div class="avatar-placeholder" aria-label="Placeholder avatar">
+            L
+          </div>
+          <h1>Hi, I'm <span class="highlight">Ledesma</span></h1>
+          <p>
+            A Full-Stack Developer passionate about clean code, modern layouts,
+            and asynchronous web applications.
+          </p>
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+        </div>
+      </section>
+
+      <!-- About Me Section -->
+      <section id="about" class="about-section">
+        <div class="container">
+          <h2>About Me</h2>
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                I specialize in building accessible, semantic, and highly
+                interactive web applications. My workflow emphasizes separation
+                of structure and presentation, ensuring HTML handles meaning
+                while CSS paints the layout.
+              </p>
+              <ul class="skills-list">
+                <li><i class="fa-brands fa-html5"></i> Semantic HTML5</li>
+                <li>
+                  <i class="fa-brands fa-css3-alt"></i> Modern CSS
+                  (Grid/Flexbox)
+                </li>
+                <li><i class="fa-brands fa-js"></i> ES6+ JavaScript</li>
+                <li><i class="fa-brands fa-git-alt"></i> API Integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects / Gallery Section -->
+      <section id="projects" class="projects-section">
+        <div class="container">
+          <h2>Project Gallery</h2>
+
+          <!-- NEW: Fetch Custom GitHub Profile -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-6 rounded-xl mb-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          >
+            <div>
+              <h3 class="font-bold text-slate-800 text-lg">
+                Load GitHub Profile
+              </h3>
+              <p class="text-sm text-slate-600">
+                Enter a username to pull their public repositories.
+              </p>
+            </div>
+            <div class="flex w-full md:w-auto gap-2">
+              <input
+                type="text"
+                id="githubUserInput"
+                placeholder="e.g., vinceledesma, octocat"
+                aria-label="GitHub username"
+                class="w-full md:w-64 px-4 py-2 text-slate-900 placeholder:text-slate-500 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-slate-500"
+              />
+              <button
+                id="fetchUserBtn"
+                class="btn btn-primary whitespace-nowrap"
+              >
+                Fetch Repos
+              </button>
+            </div>
+          </div>
+
+          <div class="projects-controls mt-6">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search projects by name..."
+              aria-label="Search projects"
+            />
+            <button id="showBookmarksBtn" class="btn btn-secondary">
+              <i class="fa-solid fa-bookmark"></i> Bookmarks
+            </button>
+          </div>
+
+          <div id="loadingSpinner" class="spinner hidden">
+            <i class="fa-solid fa-circle-notch fa-spin"></i> Fetching
+            repositories...
+          </div>
+
+          <div id="errorContainer" class="error-message hidden"></div>
+
+          <div id="projectGallery" class="gallery-grid">
+            <!-- Cards injected via JS DOM Manipulation -->
+          </div>
+
+          <div class="pagination-controls hidden" id="paginationControls">
+            <button id="prevPage" class="btn btn-secondary">
+              <i class="fa-solid fa-chevron-left"></i> Prev
+            </button>
+            <span id="pageInfo">Page 1 of X</span>
+            <button id="nextPage" class="btn btn-secondary">
+              Next <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Me Form (Bonus) -->
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2>Contact Me</h2>
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="fullName"
+                >Full Name <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="fullName"
+                autocomplete="name"
+                placeholder="Juan dela Cruz"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone"
+                >PH Phone Number <span class="required">*</span></label
+              >
+              <input
+                type="tel"
+                id="phone"
+                placeholder="09xxxxxxxxx or +639xxxxxxxxx"
+                required
+              />
+              <small class="error-text" id="phoneError"
+                >Please enter a valid PH mobile number.</small
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div id="formError" class="error-message hidden" role="alert">
+              Please provide a valid full name and Philippine mobile number.
+            </div>
+            <div id="formSuccess" class="success-message hidden">
+              Thanks! Your message is ready to be sent.
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2026 Ledesma. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
